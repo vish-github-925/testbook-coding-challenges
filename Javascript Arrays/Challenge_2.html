@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays | Challenge</title>
+  </head>
+  <body>
+    <h1>JavaScript Array</h1>
+    <!-- unordered list -->
+    <ul class="list"></ul>
+    <script>
+      // getting the unordered list
+      const list = document.querySelector(".list");
+
+      //   Creating an array
+      const carsArray = ["BMW", "Audi", "Scoda", "Benz"];
+
+      //   Function to append array elements as list items
+      const listItemInvocation = () => {
+        // using forEach to loop through the array
+        carsArray.forEach((ele) => {
+          // creating list element for each element of an array
+          const listItem = document.createElement("li");
+          listItem.textContent = ele;
+          list.append(listItem);
+        });
+      };
+
+      //   Calling the function to append array elements as list items to the unordered list
+      listItemInvocation();
+    </script>
+  </body>
+</html>
