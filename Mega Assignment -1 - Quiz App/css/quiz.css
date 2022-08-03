@@ -18,6 +18,40 @@ body {
   width: 100%;
   overflow: hidden;
   letter-spacing: 1.5px;
+  position: relative;
+}
+.rules_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 200px;
+  min-width: 400px;
+  padding: 20px;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+.rules_buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.rules_buttons .back,
+.rules_buttons .continue {
+  height: 6%;
+  width: 20%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: var(--textbook_color);
+  border-radius: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
 }
 .container {
   min-height: 80vh;
@@ -30,6 +64,9 @@ body {
   border-radius: 6px;
   padding: 40px;
   position: relative;
+}
+.hidden {
+  display: none;
 }
 .container > * {
   margin: 10px;

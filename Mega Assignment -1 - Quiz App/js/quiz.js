@@ -10,6 +10,8 @@ const categoryName = localStorage.getItem("quiz_category");
 const userName = localStorage.getItem("quiz_user_name");
 
 // DOM elements
+const containerTag = document.querySelector(".container");
+const rulesContainerTag = document.querySelector(".rules_container");
 const categoryNameTag = document.querySelector(".category_name");
 const timerTag = document.querySelector(".timer");
 const scoreTag = document.querySelector(".score");
@@ -21,6 +23,8 @@ const opt2Tag = document.querySelector(".opt2");
 const opt3Tag = document.querySelector(".opt3");
 const opt4Tag = document.querySelector(".opt4");
 const nextQuestion = document.querySelector(".next_question");
+const backButton = document.querySelector(".rules_buttons .back");
+const continueButton = document.querySelector(".rules_buttons .continue");
 let totalTimeTaken = 0;
 
 let selectedCategory;
@@ -106,7 +110,6 @@ const timerFunction = () => {
 function counter() {
   questionTimer = setInterval(timerFunction, 1000);
 }
-counter();
 
 const totalOptions = [opt1Tag, opt2Tag, opt3Tag, opt4Tag];
 let unselectedOptionsItems;
@@ -146,6 +149,21 @@ const checkCorrectAnswer = (arg) => {
     }
   });
 };
+// rules buttons event listener
+continueButton.addEventListener("click", () => {
+  containerTag.classList.remove("hidden");
+  rulesContainerTag.classList.add("hidden");
+  console.log("Clicked continue");
+  // timerTag.textContent = 10;
+  // time = 10;
+  counter();
+});
+backButton.addEventListener("click", () => {
+  console.log("clicked back");
+  containerTag.classList.add("hidden");
+  rulesContainerTag.classList.remove("hidden");
+  location.replace("../index.html");
+});
 // options event listener
 opt1Tag.addEventListener("click", function () {
   // selectOption(this);

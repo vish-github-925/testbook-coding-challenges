@@ -9,7 +9,7 @@
     <title>Quiz</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container hidden">
       <div class="info">
         <h3 class="category_name"></h3>
       </div>
@@ -37,7 +37,22 @@
       <p class="user_name"></p>
       <button class="home_page"><a href="../index.html">Go To Home</a></button>
     </div>
-
+    <div class="rules_container">
+      <h1>Rules of quiz</h1>
+      <p>1. You will have 10 seconds to answer each question.</p>
+      <p>
+        2. The timer for each question will be displayed at the left corner.
+      </p>
+      <p>3. You can see your entered name at the right bottom corner.</p>
+      <p>
+        4. Click <strong>Continue</strong> to start the <strong>Quiz</strong>
+      </p>
+      <p>5. Click <strong>Go To Home</strong> to go to the starting page.</p>
+      <div class="rules_buttons">
+        <button class="back">Go To Home</button>
+        <button class="continue">Continue</button>
+      </div>
+    </div>
     <!-- JS -->
     <script src="../js/quiz.js" type="module"></script>
   </body>
