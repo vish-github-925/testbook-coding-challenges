@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JSON</title>
+  </head>
+  <body>
+    <h2>JSON</h2>
+    <p id="demo"></p>
+    <script>
+      const schoolDetails =
+        '{"schoolName":"SBOA", "year":1998, "rankInTheCity":1, "noOfStudentsStudying": 1000}';
+      const object = JSON.parse(schoolDetails);
+      const htmlData = `<b>School Name = ${object.schoolName}  <br><br>
+      Year = ${object.year} <br><br>
+      Rank in the city = ${object.rankInTheCity} <br><br>
+      Number of students studying = ${object.noOfStudentsStudying}</b> <br><br>`;
+      document.getElementById("demo").innerHTML = htmlData;
+    </script>
+  </body>
+</html>
