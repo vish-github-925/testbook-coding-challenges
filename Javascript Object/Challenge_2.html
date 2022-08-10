@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object | Challenge</title>
+    <style>
+      * {
+        margin: unset;
+        padding: unset;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: grid;
+        place-content: center;
+        overflow: hidden;
+        font-family: sans-serif;
+      }
+      .container {
+        padding: 15px 30px 10px;
+        height: 300px;
+        width: 400px;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: 3px solid black;
+      }
+      .quote-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .quote-details > * {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      #heading {
+        color: lightseagreen;
+      }
+      button {
+        border: none;
+        outline: none;
+        height: 30px;
+        width: 200px;
+        padding: 10px 10px;
+        border: 2px solid lightskyblue;
+        color: lightseagreen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="heading">Get Your Daily Quote</h1>
+      <div class="quote-details">
+        <p id="quote">
+          <!-- It does not matter how slowly you go as long as you dont stop. -->
+        </p>
+        <p id="quote_by">
+          <!-- <b><em>- vishnuvardhan </em></b> -->
+        </p>
+      </div>
+      <button type="button">Click Me</button>
+    </div>
+  </body>
+  <script>
+    const quoteTag = document.getElementById("quote");
+    const quotebyTag = document.getElementById("quote_by");
+    const buttonTag = document.querySelector("button");
+
+    let randomQuoteNumber = 0;
+    let quote_htmlData;
+    let quote_by_htmlData;
+    let previousNumber = 0;
+
+    const quotes = [
+      [
+        "Life isn\’t about getting and having, it\’s about giving and being",
+        "Whatever the mind of man can conceive and believe, it can achieve.",
+        "Strive not to be a success, but rather to be of value.",
+        "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.",
+        "I attribute my success to this: I never gave or took any excuse.",
+      ],
+      [
+        "Kevin Kruse",
+        "Napolean Hill",
+        "Albert Einstein",
+        "Robert Frost",
+        "Florence Nightingale",
+      ],
+    ];
+
+    const quoteContentData = (randomQuoteNumber) => {
+      quote_htmlData = quotes[0][randomQuoteNumber];
+      quote_by_htmlData = `<b><em>- ${quotes[1][randomQuoteNumber]} </em></b>`;
+
+      quoteTag.innerHTML = quote_htmlData;
+      quotebyTag.innerHTML = quote_by_htmlData;
+    };
+
+    quoteContentData(0);
+    buttonTag.addEventListener("click", () => {
+      do {
+        randomQuoteNumber = Math.floor(Math.random() * 5);
+      } while (randomQuoteNumber === previousNumber);
+      previousNumber = randomQuoteNumber;
+      quoteContentData(randomQuoteNumber);
+    });
+  </script>
+</html>
