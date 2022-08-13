@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  margin: unset;
+  padding: unset;
+  box-sizing: border-box;
+}
+div form > * {
+  margin: 5px 0px 0px;
+}
+a {
+  text-decoration: none;
+  font-size: 15px;
+}
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  line-height: 30px;
+}
+.imgs {
+  height: 150px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+}
+.img {
+  height: 100%;
+  width: 75%;
+}
+.img_logo {
+  height: 75%;
+  width: 20%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 300px;
+  width: 500px;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  margin-bottom: 50px;
+}
+.container::before {
+  content: "";
+  height: 450px;
+  width: 25px;
+  background-color: saddlebrown;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  border-radius: 15px 15px 0px 0px;
+}
+.game_container {
+  height: 50%;
+  width: 95%;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+.game_container h2 {
+  color: blue;
+}
+.input_group {
+  height: 30px;
+  width: 50%;
+}
+.input_group > input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: 2px solid blue;
+  padding: 0px 10px;
+  font-family: inherit;
+  border-radius: 5px;
+}
+.input_group > input[type="text"] {
+  color: blue;
+}
+.game_info,
+.game_stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 140px;
+  width: 95%;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+}
+.game_info {
+  background-color: orangered;
+}
+.game_stats {
+  background-color: green;
+}
+.game_stats_outside {
+  margin-top: 20px;
+  height: 140px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.game_output {
+  transition: transform 3s ease-in;
+}
+@keyframes output {
+  0% {
+    opacity: 0;
+    transform: transformY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: transformY(0px);
+  }
+}
+.btn {
+  display: block;
+  cursor: pointer;
+  height: 30px;
+  width: max-content;
+  padding: 3px 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  transform: translateY(0px);
+  transition: transform 0.4s ease-in;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.hidden {
+  opacity: 0;
+}
