@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 50px;
+        height: 350px;
+        width: 350px;
+        border: 1px solid black;
+      }
+      .dice_container {
+        height: 150px;
+        width: 150px;
+        border: 15px solid black;
+        padding: 15px;
+        cursor: pointer;
+      }
+      .dice {
+        height: 100%;
+        width: 100%;
+      }
+      .dot {
+        height: 25px;
+        width: 25px;
+        background-color: black;
+        border-radius: 50%;
+      }
+      .one {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .two,
+      .three {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transform: rotate(45deg);
+      }
+      .four .top {
+        height: 75%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .four .bottom {
+        display: flex;
+        justify-content: space-between;
+      }
+      .five .top {
+        display: flex;
+        height: 40%;
+        justify-content: space-between;
+      }
+      .five .middle {
+        display: flex;
+        height: 40%;
+        justify-content: center;
+      }
+      .five .bottom {
+        display: flex;
+        justify-content: space-between;
+      }
+      .six .top,
+      .six .middle {
+        display: flex;
+        height: 40%;
+        justify-content: space-between;
+      }
+      .six .bottom {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+    <title>Dice game</title>
+  </head>
+  <body>
+    <div class="container">
+      <p>Click on the dice...</p>
+      <p class="output"></p>
+      <div class="dice_container">
+        <!-- one -->
+        <div class="dice one hidden">
+          <p class="dot"></p>
+        </div>
+        <!-- two -->
+        <div class="dice two hidden">
+          <p class="dot"></p>
+          <p class="dot"></p>
+        </div>
+        <!-- three -->
+        <div class="dice three hidden">
+          <p class="dot"></p>
+          <p class="dot"></p>
+          <p class="dot"></p>
+        </div>
+        <!-- four -->
+        <div class="dice four hidden">
+          <div class="top">
+            <p class="dot"></p>
+            <p class="dot"></p>
+          </div>
+          <div class="bottom">
+            <p class="dot"></p>
+            <p class="dot"></p>
+          </div>
+        </div>
+        <!-- five -->
+        <div class="dice five hidden">
+          <div class="top">
+            <p class="dot"></p>
+            <p class="dot"></p>
+          </div>
+          <div class="middle">
+            <p class="dot"></p>
+          </div>
+          <div class="bottom">
+            <p class="dot"></p>
+            <p class="dot"></p>
+          </div>
+        </div>
+        <!-- six -->
+        <div class="dice six">
+          <div class="top">
+            <p class="dot"></p>
+            <p class="dot"></p>
+          </div>
+          <div class="middle">
+            <p class="dot"></p>
+            <p class="dot"></p>
+          </div>
+          <div class="bottom">
+            <p class="dot"></p>
+            <p class="dot"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const diceContainer = document.querySelector(".dice_container");
+      const diceOne = document.querySelector(".one");
+      const diceTwo = document.querySelector(".two");
+      const diceThree = document.querySelector(".three");
+      const diceFour = document.querySelector(".four");
+      const diceFive = document.querySelector(".five");
+      const diceSix = document.querySelector(".six");
+      const die = document.querySelectorAll(".dice");
+      const output = document.querySelector(".output");
+
+      let flag = false;
+      let diceRolling;
+      let diceValue = 1;
+
+      const rollTheDice = () => {
+        diceValue = Math.floor(Math.random() * 6 + 1);
+        die.forEach((dice) => {
+          dice.classList.add("hidden");
+        });
+        switch (diceValue) {
+          case 1:
+            diceOne.classList.remove("hidden");
+            break;
+          case 2:
+            diceTwo.classList.remove("hidden");
+            break;
+          case 3:
+            diceThree.classList.remove("hidden");
+            break;
+          case 4:
+            diceFour.classList.remove("hidden");
+            break;
+          case 5:
+            diceFive.classList.remove("hidden");
+            break;
+          case 6:
+            diceSix.classList.remove("hidden");
+            break;
+
+          default:
+            break;
+        }
+      };
+      diceContainer.addEventListener("click", () => {
+        flag = !flag;
+        if (flag === true) {
+          diceRolling = setInterval(rollTheDice, 100);
+          output.innerHTML = "";
+        } else {
+          clearInterval(diceRolling);
+          output.innerHTML = `You got: <b>${diceValue}</b>`;
+        }
+      });
+    </script>
+  </body>
+</html>
