@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer minutes and seconds</title>
+    <!-- CSS -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        background-color: black;
+        height: 250px;
+        width: 250px;
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        border-radius: 10px;
+        border: 5px solid lightseagreen;
+        box-shadow: 5px 5px 20px 5px rgb(99, 119, 99);
+      }
+      .btns {
+        display: flex;
+      }
+      .btn {
+        outline: none;
+        background-color: purple;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 5px 10px;
+        border: 2px solid white;
+        margin-right: 5px;
+      }
+      .btn:disabled {
+        background-color: lightgoldenrodyellow;
+        color: black;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Stopwatch</h3>
+      <h1 class="stopwatch">00:00</h1>
+      <div class="btns">
+        <button class="start btn">Start</button>
+        <button class="stop btn">Stop</button>
+        <button class="reset btn">reset</button>
+      </div>
+    </div>
+    <script>
+      const stopWatch = document.querySelector(".stopwatch");
+      const startBtn = document.querySelector(".start");
+      const stopBtn = document.querySelector(".stop");
+      const resetBtn = document.querySelector(".reset");
+
+      let minutes = 0;
+      let minutesStr = "";
+      let seconds = 0;
+      let secondsStr = "";
+      let started = false;
+      let timer = setInterval(() => {
+        if (started) {
+          if (seconds > 58) {
+            minutes = minutes + 1;
+            seconds = 0;
+          } else {
+            seconds = seconds + 1;
+          }
+          if (minutes < 10) {
+            minutesStr = `0${minutes}`;
+          } else {
+            minutesStr = `${minutes}`;
+          }
+          if (seconds < 10) {
+            secondsStr = `0${seconds}`;
+          } else {
+            secondsStr = `${seconds}`;
+          }
+          stopWatch.textContent = `${minutesStr}:${secondsStr}`;
+        }
+      }, 1000);
+      stopBtn.disabled = true;
+      resetBtn.disabled = true;
+      const startStopWatch = () => {
+        started = true;
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        resetBtn.disabled = false;
+      };
+      const stopStopWatch = () => {
+        started = false;
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+      };
+      const resetStopWatch = () => {
+        started = false;
+        minutes = 0;
+        seconds = 0;
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        resetBtn.disabled = true;
+        stopWatch.textContent = "00:00";
+      };
+
+      startBtn.addEventListener("click", startStopWatch);
+      stopBtn.addEventListener("click", stopStopWatch);
+      resetBtn.addEventListener("click", resetStopWatch);
+    </script>
+  </body>
+</html>
