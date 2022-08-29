@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async await Assignment</title>
+  </head>
+  <body>
+    <p id="firstvalue"></p>
+    <p id="secondvalue"></p>
+    <p id="answer"></p>
+    <script>
+      const firstP = document.getElementById("firstvalue");
+      const secondP = document.getElementById("secondvalue");
+      const answerP = document.getElementById("answer");
+
+      let firstValue;
+      let secondValue;
+
+      function randomValue() {
+        return Math.floor(Math.random() * 3);
+      }
+
+      firstValue = randomValue();
+      secondValue = randomValue();
+      firstP.textContent = "firstValue: " + firstValue;
+      secondP.textContent = "secondValue: " + secondValue;
+      let checkValues = new Promise(function (resolve, reject) {
+        if (
+          firstValue === secondValue &&
+          typeof firstValue === typeof secondValue
+        ) {
+          resolve("Both the values are equal and of same type");
+        } else {
+          reject("Both values are different");
+        }
+      });
+
+      let answer = checkValues
+        .then((resolvedAnswer) => {
+          console.log(resolvedAnswer);
+          answerP.textContent = "Answer: " + resolvedAnswer;
+        })
+        .catch((rejectedAnswer) => {
+          console.log(rejectedAnswer);
+          answerP.textContent = "Answer: " + rejectedAnswer;
+        });
+    </script>
+  </body>
+</html>
